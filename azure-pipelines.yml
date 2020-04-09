@@ -10,11 +10,15 @@ steps:
 - task: Ant@1
 - task: ExtractFiles@1
   inputs:
-    archiveFilePatterns: '*.war'
-    destinationFolder: '/dist'
     cleanDestinationFolder: true
-    workingDirectory: ''
     buildFile: 'build.xml'
+- task: Ant@1
+  inputs:
+    buildFile: 'build.xml'
+    options: 
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
