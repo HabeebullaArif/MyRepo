@@ -9,6 +9,11 @@ trigger:
 steps:
 - task: Ant@1
   inputs:
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: '*.war'
+    destinationFolder: '/dist'
+    cleanDestinationFolder: true
     workingDirectory: ''
     buildFile: 'build.xml'
     javaHomeOption: 'JDKVersion'
